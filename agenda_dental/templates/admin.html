@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panel Administrativo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="font-family:Arial; background:#f7f5ef;">
+
+<div style="max-width:1400px; margin:auto; padding:30px;">
+
+    <center>
+        <img src="/static/img/logo.png" width="220">
+
+        <h1>Panel Administrativo</h1>
+
+        <h3>Belinda Ballerini</h3>
+
+        <a href="/logout"
+           style="
+                background:#b00020;
+                color:white;
+                padding:10px 15px;
+                border-radius:8px;
+                text-decoration:none;
+                display:inline-block;
+                margin-top:10px;
+           ">
+            Cerrar sesión
+        </a>
+
+    </center>
+
+    <hr>
+
+    <center>
+
+        <form method="get" action="/admin">
+
+            <input
+                type="text"
+                name="buscar"
+                value="{{ busqueda }}"
+                placeholder="Buscar por nombre, RUT o teléfono"
+                style="
+                    width:350px;
+                    padding:10px;
+                    border-radius:8px;
+                    border:1px solid #ccc;
+                "
+            >
+
+            <button
+                type="submit"
+                style="
+                    background:#0c4a43;
+                    color:white;
+                    border:none;
+                    padding:10px 15px;
+                    border-radius:8px;
+                ">
+                Buscar
+            </button>
+
+        </form>
+
+    </center>
+
+    <br>
+
+    <div style="
+        display:flex;
+        justify-content:center;
+        gap:15px;
+        flex-wrap:wrap;
+        margin-bottom:25px;
+    ">
+
+        <div style="
+            background:white;
+            padding:15px 25px;
+            border-radius:12px;
+            text-align:center;
+            min-width:160px;
+        ">
+            <strong>Total Reservas</strong><br>
+            <span style="font-size:28px;">
+                {{ total_reservas }}
+            </span>
+        </div>
+
+        <div style="
+            background:white;
+            padding:15px 25px;
+            border-radius:12px;
+            text-align:center;
+            min-width:160px;
+        ">
+            <strong>Ingreso Adulto</strong><br>
+            <span style="font-size:28px;">
+                {{ total_adulto }}
+            </span>
+        </div>
+
+        <div style="
+            background:white;
+            padding:15px 25px;
+            border-radius:12px;
+            text-align:center;
+            min-width:160px;
+        ">
+            <strong>Ingreso Pediátrico</strong><br>
+            <span style="font-size:28px;">
+                {{ total_pediatrico }}
+            </span>
+        </div>
+
+        <div style="
+            background:white;
+            padding:15px 25px;
+            border-radius:12px;
+            text-align:center;
+            min-width:160px;
+        ">
+            <strong>Cresser</strong><br>
+            <span style="font-size:28px;">
+                {{ total_cresser }}
+            </span>
+        </div>
+
+        <div style="
+            background:white;
+            padding:15px 25px;
+            border-radius:12px;
+            text-align:center;
+            min-width:160px;
+        ">
+            <strong>Centro Médico Aysén</strong><br>
+            <span style="font-size:28px;">
+                {{ total_aysen }}
+            </span>
+        </div>
+
+    </div>
+
+<table border="1"
+       width="100%"
+       cellpadding="10"
+       style="
+            background:white;
+            border-collapse:collapse;
+            text-align:center;
+       ">
+
+    <tr style="background:#dce7d0;">
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Paciente</th>
+        <th>RUT</th>
+        <th>Edad</th>
+        <th>Correo</th>
+        <th>Teléfono</th>
+        <th>Servicio</th>
+        <th>Centro</th>
+        <th>Acción</th>
+    </tr>
+
+    {% for reserva in reservas %}
+    <tr>
+        <td>{{ reserva[1] }}</td>
+        <td>{{ reserva[2] }}</td>
+        <td>{{ reserva[6] }}</td>
+        <td>{{ reserva[7] }}</td>
+        <td>{{ reserva[8] }}</td>
+        <td>{{ reserva[9] }}</td>
+        <td>{{ reserva[10] }}</td>
+        <td>{{ reserva[5] }}</td>
+        <td>{{ reserva[3] }}</td>
+
+        <td>
+            <a href="/admin/eliminar/{{ reserva[0] }}"
+               onclick="return confirm('¿Seguro que deseas eliminar esta reserva?');"
+               style="
+                    background:#b00020;
+                    color:white;
+                    padding:8px 12px;
+                    text-decoration:none;
+                    border-radius:6px;
+               ">
+                🗑 Eliminar
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<br>
+
+<center>
+
+    <a href="/admin/horarios"
+       style="
+            background:#1565c0;
+            color:white;
+            padding:12px 20px;
+            text-decoration:none;
+            border-radius:8px;
+            margin-right:10px;
+       ">
+        Administrar Horarios
+    </a>
+
+    <a href="/admin/exportar"
+       style="
+            background:#2e7d32;
+            color:white;
+            padding:12px 20px;
+            text-decoration:none;
+            border-radius:8px;
+       ">
+        📥 Exportar Reservas
+    </a>
+
+</center>
+
+</div>
+
+</body>
+</html>

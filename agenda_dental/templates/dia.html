@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Horas disponibles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="font-family: Arial; background:#f7f5ef; margin:0; padding:10px;">
+
+<div style="max-width:900px; margin:auto; padding:20px;">
+
+    <center>
+        <img src="/static/img/logo.png"
+             style="max-width:230px; width:80%; height:auto;">
+
+        <h1>{{ nombre_dia }} {{ dia }} de {{ mes }}</h1>
+        <h2>Horas disponibles</h2>
+    </center>
+
+    {% if horas %}
+
+        {% for hora in horas %}
+
+            <div style="
+                background:white;
+                padding:20px;
+                margin:12px 0;
+                border-radius:12px;
+                box-shadow:0 2px 8px rgba(0,0,0,0.08);
+            ">
+
+                <h3 style="margin-top:0;">
+                    {{ hora.hora }}
+                </h3>
+
+                <p>
+                    <strong>{{ hora.centro }}</strong><br>
+                    {{ hora.direccion }}
+                </p>
+
+                <a href="/reservar?fecha={{ nombre_dia }} {{ dia }} de {{ mes }}&hora={{ hora.hora }}&centro={{ hora.centro }}&direccion={{ hora.direccion }}"
+                   style="text-decoration:none;">
+
+                    <button
+                        style="
+                            width:100%;
+                            background:#0c4a43;
+                            color:white;
+                            border:none;
+                            padding:12px;
+                            border-radius:8px;
+                            font-size:16px;
+                            cursor:pointer;
+                            font-weight:bold;
+                        ">
+                        Reservar hora
+                    </button>
+
+                </a>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div style="
+            background:white;
+            padding:20px;
+            border-radius:12px;
+            text-align:center;
+        ">
+            No hay horas disponibles para este día.
+        </div>
+
+    {% endif %}
+
+    <br>
+
+    <center>
+
+        <a href="/"
+           style="
+                background:#666;
+                color:white;
+                padding:12px 20px;
+                border-radius:8px;
+                text-decoration:none;
+                display:inline-block;
+           ">
+            Volver al calendario
+        </a>
+
+    </center>
+
+</div>
+
+</body>
+</html>

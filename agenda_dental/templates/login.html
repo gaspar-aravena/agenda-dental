@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Acceso Administrativo</title>
+</head>
+
+<body style="font-family:Arial; background:#f7f5ef;">
+
+<div style="
+    max-width:500px;
+    margin:auto;
+    margin-top:80px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+">
+
+    <img src="/static/img/logo.png" width="200">
+
+    <h2>Acceso Administrativo</h2>
+
+    <form method="post">
+
+        <input
+            type="text"
+            name="usuario"
+            placeholder="Usuario"
+            required
+            style="width:90%; padding:10px; margin:10px;"
+        >
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            required
+            style="width:90%; padding:10px; margin:10px;"
+        >
+
+        <br>
+
+        <button
+            type="submit"
+            style="
+                background:#0c4a43;
+                color:white;
+                border:none;
+                padding:12px 25px;
+                border-radius:8px;
+            ">
+            Ingresar
+        </button>
+
+    </form>
+
+    {% if error %}
+        <p style="color:red;">
+            Usuario o contraseña incorrectos
+        </p>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

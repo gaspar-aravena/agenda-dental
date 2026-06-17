@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Belinda Ballerini Odontología</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="font-family: Arial; background:#f7f5ef; margin:0; padding:10px;">
+
+<div style="max-width:1100px; margin:auto; padding:10px;">
+
+    <center>
+
+        <img src="/static/img/logo.png"
+             style="max-width:250px; width:80%; height:auto;">
+
+        <br><br>
+
+        <img src="/static/img/belinda.png"
+             width="140"
+             style="border-radius:50%; max-width:45%; height:auto;">
+
+        <h1 style="font-size:28px;">Belinda Ballerini</h1>
+
+        <h3>Odontóloga</h3>
+
+        <a href="https://wa.me/56953723630"
+           target="_blank"
+           style="
+              background:#25D366;
+              color:white;
+              padding:12px 20px;
+              border-radius:8px;
+              text-decoration:none;
+              font-weight:bold;
+              display:inline-block;
+              margin-top:10px;
+           ">
+           📱 Contactar por WhatsApp
+        </a>
+
+    </center>
+
+    <hr>
+
+    <h2>Centros de Atención</h2>
+
+    <p>
+        <strong>Centro Integral Cresser</strong><br>
+        Lautaro 1070
+    </p>
+
+    <p>
+        <strong>Centro Médico Aysén</strong><br>
+        Carrera 231
+    </p>
+
+    <hr>
+
+    <center>
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:20px;
+            flex-wrap:wrap;
+            margin-bottom:20px;
+        ">
+
+            {% if mes_anterior %}
+                <a href="/calendario/{{ anio }}/{{ mes_anterior }}"
+                   style="
+                        text-decoration:none;
+                        font-size:14px;
+                        font-weight:bold;
+                        background:#0c4a43;
+                        color:white;
+                        padding:8px 12px;
+                        border-radius:8px;
+                   ">
+                   ◀ Mes anterior
+                </a>
+            {% endif %}
+
+            <h2 style="margin:10px;">{{ mes }} {{ anio }}</h2>
+
+            {% if mes_siguiente %}
+                <a href="/calendario/{{ anio }}/{{ mes_siguiente }}"
+                   style="
+                        text-decoration:none;
+                        font-size:14px;
+                        font-weight:bold;
+                        background:#0c4a43;
+                        color:white;
+                        padding:8px 12px;
+                        border-radius:8px;
+                   ">
+                   Mes siguiente ▶
+                </a>
+            {% endif %}
+
+        </div>
+
+    </center>
+
+    <div style="overflow-x:auto;">
+
+        <table
+            border="1"
+            width="100%"
+            cellpadding="8"
+            style="
+                background:white;
+                border-collapse:collapse;
+                text-align:center;
+                min-width:360px;
+            "
+        >
+
+            <tr style="background:#dce7d0;">
+                <th>Lun</th>
+                <th>Mar</th>
+                <th>Mié</th>
+                <th>Jue</th>
+                <th>Vie</th>
+                <th>Sáb</th>
+                <th>Dom</th>
+            </tr>
+
+            {% for semana in calendario %}
+            <tr>
+
+                {% for dia in semana %}
+
+                    {% if dia == 0 %}
+                        <td></td>
+
+                    {% elif numero_mes == 6 and dia < 15 %}
+                        <td style="background:#eeeeee; color:#999;">
+                            {{ dia }}
+                        </td>
+
+                    {% else %}
+                        <td style="
+                            background:#e8f5e9;
+                            cursor:pointer;
+                            font-size:18px;
+                            font-weight:bold;
+                            height:45px;
+                        ">
+                            <a href="/dia/{{ anio }}/{{ numero_mes }}/{{ dia }}"
+                               style="
+                                    display:block;
+                                    color:black;
+                                    text-decoration:none;
+                                    padding:12px 0;
+                               ">
+                                {{ dia }}
+                            </a>
+                        </td>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+    <br>
+
+    <center>
+        <p>
+            Seleccione una fecha para ver las horas disponibles
+        </p>
+    </center>
+
+</div>
+
+</body>
+</html>

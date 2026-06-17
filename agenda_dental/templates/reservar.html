@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reserva de Hora</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="font-family:Arial; background:#f7f5ef; margin:0; padding:10px;">
+
+<div style="
+    max-width:700px;
+    margin:auto;
+    margin-top:20px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+">
+
+    <center>
+
+        <img src="/static/img/logo.png"
+             style="max-width:250px; width:80%; height:auto;">
+
+        <h1>Reserva de Hora</h1>
+
+    </center>
+
+    <hr>
+
+    <p><strong>Fecha:</strong> {{ fecha }}</p>
+
+    <p><strong>Hora:</strong> {{ hora }}</p>
+
+    <p>
+        <strong>Ubicación:</strong><br>
+        {{ centro }}<br>
+        {{ direccion }}
+    </p>
+
+    <hr>
+
+    <form action="/confirmacion" method="post">
+
+        <input type="hidden" name="fecha" value="{{ fecha }}">
+        <input type="hidden" name="hora" value="{{ hora }}">
+        <input type="hidden" name="centro" value="{{ centro }}">
+        <input type="hidden" name="direccion" value="{{ direccion }}">
+
+        <label><strong>Tipo de atención</strong></label><br><br>
+
+        <input type="radio"
+               name="servicio"
+               value="Ingreso Adulto"
+               required>
+        Ingreso Adulto (60 minutos)
+
+        <br>
+
+        <input type="radio"
+               name="servicio"
+               value="Ingreso Pediátrico"
+               required>
+        Ingreso Pediátrico (60 minutos)
+
+        <br><br>
+
+        <label>Nombre Completo</label><br>
+
+        <input
+            type="text"
+            name="nombre"
+            required
+            style="
+                width:100%;
+                padding:12px;
+                box-sizing:border-box;
+                border:1px solid #ccc;
+                border-radius:8px;
+            "
+        >
+
+        <br><br>
+
+        <label>RUT</label><br>
+
+        <input
+            type="text"
+            name="rut"
+            required
+            style="
+                width:100%;
+                padding:12px;
+                box-sizing:border-box;
+                border:1px solid #ccc;
+                border-radius:8px;
+            "
+        >
+
+        <br><br>
+
+        <label>Edad</label><br>
+
+        <input
+            type="number"
+            name="edad"
+            required
+            style="
+                width:100%;
+                padding:12px;
+                box-sizing:border-box;
+                border:1px solid #ccc;
+                border-radius:8px;
+            "
+        >
+
+        <br><br>
+
+        <label>Correo Electrónico</label><br>
+
+        <input
+            type="email"
+            name="correo"
+            required
+            style="
+                width:100%;
+                padding:12px;
+                box-sizing:border-box;
+                border:1px solid #ccc;
+                border-radius:8px;
+            "
+        >
+
+        <br><br>
+
+        <label>Número de Teléfono</label><br>
+
+        <input
+            type="text"
+            name="telefono"
+            required
+            style="
+                width:100%;
+                padding:12px;
+                box-sizing:border-box;
+                border:1px solid #ccc;
+                border-radius:8px;
+            "
+        >
+
+        <br><br>
+
+        <button
+            type="submit"
+            style="
+                width:100%;
+                background:#0c4a43;
+                color:white;
+                border:none;
+                padding:14px;
+                border-radius:8px;
+                cursor:pointer;
+                font-size:16px;
+                font-weight:bold;
+            "
+        >
+            Confirmar Reserva
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

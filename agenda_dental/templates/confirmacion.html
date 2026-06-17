@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reserva Confirmada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="font-family:Arial; background:#f7f5ef; margin:0; padding:10px;">
+
+<div style="
+    max-width:700px;
+    margin:auto;
+    margin-top:20px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+">
+
+    <img src="/static/img/logo.png"
+         style="max-width:240px; width:80%; height:auto;">
+
+    <h1>✅ Reserva recibida correctamente</h1>
+
+    <h2>Belinda Ballerini</h2>
+    <h3>Odontóloga</h3>
+
+    <hr>
+
+    <p>
+        <strong>Fecha:</strong><br>
+        {{ fecha }}
+    </p>
+
+    <p>
+        <strong>Hora:</strong><br>
+        {{ hora }}
+    </p>
+
+    <p>
+        <strong>Lugar:</strong><br>
+        {{ centro }}<br>
+        {{ direccion }}
+    </p>
+
+    <hr>
+
+    <p>
+        <strong>Importante:</strong><br>
+        Le solicitamos presentarse 15 minutos antes de su hora agendada
+        para realizar el registro correspondiente.
+    </p>
+
+    <p>
+        Ante cualquier inconveniente o necesidad de modificación de la cita,
+        por favor comunicarse directamente con la profesional.
+    </p>
+
+    <br>
+
+    <a href="https://wa.me/56953723630"
+       target="_blank"
+       style="
+          background:#25D366;
+          color:white;
+          padding:14px;
+          border-radius:8px;
+          text-decoration:none;
+          font-weight:bold;
+          display:block;
+          width:100%;
+          max-width:320px;
+          margin:auto;
+          box-sizing:border-box;
+       ">
+       📱 Contactar por WhatsApp
+    </a>
+
+    <br>
+
+    <a href="/"
+       style="
+            background:#666;
+            color:white;
+            padding:12px 20px;
+            border-radius:8px;
+            text-decoration:none;
+            display:inline-block;
+       ">
+       Volver al calendario
+    </a>
+
+</div>
+
+</body>
+</html>

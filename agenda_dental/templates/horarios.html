@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Administración de Horarios</title>
+</head>
+
+<body style="font-family:Arial; background:#f7f5ef;">
+
+<div style="max-width:1400px; margin:auto; padding:30px;">
+
+    <center>
+
+        <img src="/static/img/logo.png" width="220">
+
+        <h1>Administración de Horarios</h1>
+
+        <h3>Belinda Ballerini</h3>
+
+        <a href="/admin"
+           style="
+                background:#0c4a43;
+                color:white;
+                padding:10px 15px;
+                border-radius:8px;
+                text-decoration:none;
+           ">
+            Volver al Panel
+        </a>
+
+    </center>
+
+    <hr>
+
+    <h2>Agregar Nuevo Horario</h2>
+
+    <form action="/admin/horarios/agregar" method="post">
+
+        <table cellpadding="8">
+
+            <tr>
+                <td>Día</td>
+                <td>
+                    <select name="dia_semana" required>
+                        <option>Lunes</option>
+                        <option>Martes</option>
+                        <option>Miércoles</option>
+                        <option>Jueves</option>
+                        <option>Viernes</option>
+                        <option>Sábado</option>
+                        <option>Domingo</option>
+                    </select>
+                </td>
+
+                <td>Inicio</td>
+                <td>
+                    <input type="time"
+                           name="hora_inicio"
+                           required>
+                </td>
+
+                <td>Fin</td>
+                <td>
+                    <input type="time"
+                           name="hora_fin"
+                           required>
+                </td>
+            </tr>
+
+            <tr>
+
+                <td>Centro</td>
+                <td>
+                    <select name="centro" required>
+                        <option>Centro Integral Cresser</option>
+                        <option>Centro Médico Aysén</option>
+                    </select>
+                </td>
+
+                <td>Dirección</td>
+                <td colspan="3">
+                    <input type="text"
+                           name="direccion"
+                           style="width:100%;"
+                           required>
+                </td>
+
+            </tr>
+
+        </table>
+
+        <br>
+
+        <button
+            type="submit"
+            style="
+                background:#1565c0;
+                color:white;
+                border:none;
+                padding:12px 20px;
+                border-radius:8px;
+            ">
+            ➕ Agregar Horario
+        </button>
+
+    </form>
+
+    <hr>
+
+    <h2>Horarios Configurados</h2>
+
+    <table border="1"
+           width="100%"
+           cellpadding="10"
+           style="
+                background:white;
+                border-collapse:collapse;
+                text-align:center;
+           ">
+
+        <tr style="background:#dce7d0;">
+            <th>ID</th>
+            <th>Día</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Centro</th>
+            <th>Dirección</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for horario in horarios %}
+        <tr>
+
+            <td>{{ horario[0] }}</td>
+            <td>{{ horario[1] }}</td>
+            <td>{{ horario[2] }}</td>
+            <td>{{ horario[3] }}</td>
+            <td>{{ horario[4] }}</td>
+            <td>{{ horario[5] }}</td>
+
+            <td>
+                {% if horario[6] == 1 %}
+                    ✅ Activo
+                {% else %}
+                    ❌ Inactivo
+                {% endif %}
+            </td>
+
+            <td>
+
+                <a href="/admin/horarios/estado/{{ horario[0] }}"
+                   style="
+                        background:#f9a825;
+                        color:white;
+                        padding:6px 10px;
+                        border-radius:6px;
+                        text-decoration:none;
+                   ">
+                    Activar / Desactivar
+                </a>
+
+                <a href="/admin/horarios/eliminar/{{ horario[0] }}"
+                   onclick="return confirm('¿Eliminar horario?');"
+                   style="
+                        background:#b00020;
+                        color:white;
+                        padding:6px 10px;
+                        border-radius:6px;
+                        text-decoration:none;
+                        margin-left:5px;
+                   ">
+                    Eliminar
+                </a>
+
+            </td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
