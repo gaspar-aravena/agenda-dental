@@ -23,9 +23,9 @@ DIAS = {
 USUARIO_ADMIN = "belinda"
 PASSWORD_ADMIN = "123456"
 
-EMAIL_SISTEMA = "od.belindaballerini@gmail.com"
-PASSWORD_EMAIL = "brcgmahneiawziel"
-EMAIL_BELINDA = "od.belindaballerini@gmail.com"
+EMAIL_SISTEMA = "od.ballerini@gmail.com"
+PASSWORD_EMAIL = "brcg mahn eiaw ziel"
+EMAIL_BELINDA = "od.ballerini@gmail.com"
 
 
 def conectar_bd():
